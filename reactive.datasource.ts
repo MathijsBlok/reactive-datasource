@@ -11,10 +11,10 @@ export class ReactiveDatasourceFilterBuilder {
   value$;
   active;
 
-  finnishFunction;
+  finishFunction;
 
   constructor(finnishFunction) {
-    this.finnishFunction = finnishFunction;
+    this.finishFunction = finnishFunction;
   }
 
   withName(name) {
@@ -38,7 +38,7 @@ export class ReactiveDatasourceFilterBuilder {
   }
 
   and() {
-    return this.finnishFunction({
+    return this.finishFunction({
       name: this.name,
       filterFunc: this.filterFunction,
       value$: this.value$,
