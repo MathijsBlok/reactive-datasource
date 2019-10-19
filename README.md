@@ -3,6 +3,10 @@
 Angular cdk/material datasource for tables with builder.
 
 ````
+@ViewChild(MatSort, {static: true}) sort: MatSort;
+@ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
+
 this.dataSource = ReactiveDatasource.builder()
       .withItems(this.buildInitialItems())
       .withActiveSorting({active: 'created', direction: 'desc'})
