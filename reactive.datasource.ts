@@ -190,12 +190,8 @@ export class ReactiveDatasource extends DataSource<any> {
   }
 
   private static filter(state) {
-    let filtered = state.items;
-    state.filters
-      .forEach(f => {
-        filtered = filtered.filter(item => f.func(item));
-      });
-    return filtered;
+    return state.items
+      .filter(item =>  !state.filters.some(f => !f.func(item)));
   }
 
   private static paginate(items, page) {
@@ -221,7 +217,7 @@ export class ReactiveDatasource extends DataSource<any> {
       );
   }
 
-  private static initializePage(directive: MatPaginator, paginationOptions = {pageSize: 50, pageSizeOptions: [25, 50, 100]}) {
+  private static initializePage(directive: MatPaginator, paginationOptions = {pageSize: 25, pageSizeOptions: [25, 50, 100]}) {
     if (!directive) {
       return of(null);
     }
